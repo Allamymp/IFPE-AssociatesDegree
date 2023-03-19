@@ -1,0 +1,25 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!-- recomendation of notation is camelCasing -->
+
+<!-- Can have only one root tag-->
+<root>
+    <!--  element-->
+    <element>
+        <!-- element 'a' need be closed inside her superElement-->
+        <a>"abacate"</a>
+        <!-- attributes can be added in opening tags-->
+        <b name="attribute">"chimarrao"</b>
+        <!-- Special characters start with '&' and finish with ';'-->
+        <c>&apos;</c>
+
+
+        <!-- all elements inside "applicationUsers" are delimited in name space-->
+        <applicationUsers xmlns="http://www.google.com/">
+            <user>"Jon"</user>
+            <user>"Alfred"</user>
+            <user>"Bob"</user>
+
+         </applicationUsers>
+    </element>
+</root>
