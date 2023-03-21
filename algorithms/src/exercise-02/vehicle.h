@@ -14,6 +14,8 @@ public:
 	const string& getName() const {
 		return name;
 	}
+	virtual void mover();
+
 };
 
 class Land: public Vehicle {
@@ -29,6 +31,8 @@ public:
 
 	int getPassCap() const;
 	void setPassCap(int passCap);
+	void mover();
+
 };
 
 class Aquatic: public Vehicle {
@@ -42,6 +46,8 @@ public:
 
 	float getMaxLoad() const;
 	void setMaxLoad(float maxLoad);
+	  void mover();
+
 };
 
 class Aerial: public Vehicle {
@@ -56,4 +62,7 @@ public:
 
 	float getMaxSpeed() const;
 	void setMaxSpeed(float maxSpeed);
+	void mover();
+    virtual ~Aerial();
+
 };
