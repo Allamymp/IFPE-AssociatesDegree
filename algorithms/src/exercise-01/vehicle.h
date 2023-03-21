@@ -13,7 +13,7 @@ public:
 				finish - start).count() / 1000;
 		cout << "time[us] Constructor Wheel = " << elapsed << endl;
 	}
-	;
+
 	~Wheels() {
 		auto start = std::chrono::high_resolution_clock::now();
 		cout << "Object Wheel destroyed" << endl;
@@ -30,9 +30,10 @@ class Vehicle			// class Vehicle
 {
 
 private:			// declaration of visibility type for privacy
-	string name;			// attribute of type String, registers the name of the Vehicle
+	string name;// attribute of type String, registers the name of the Vehicle
 	int num_wheels;		// integer type attribute, records number of wheels
 	Wheels *wheels;	// wheel pointer attribute that points to Wheel class
+
 
 public:			// visibility type declaration for public
 
