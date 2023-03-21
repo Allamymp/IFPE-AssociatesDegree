@@ -3,7 +3,7 @@ using namespace std;
 #include "vehicle.h"
 #include <chrono>
 
-int main ()				// class main. Name of class changed. exclude "ExcludeThis" to run.
+int mainDELETETHIS ()				// class main. Name of class changed. exclude "DELETETHIS" to run.
 {
 	auto start = std::chrono::high_resolution_clock::now();
 
