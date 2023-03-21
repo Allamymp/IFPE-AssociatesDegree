@@ -8,7 +8,7 @@ protected:
 public:
 	Vehicle(const char *name) {
 		this->name = name;
-		cout << "Object " << getName() << " created!" << endl;
+		cout << "Object " << getName() << " created!" << endl<< endl<< endl<< endl;
 	}
 
 	const string& getName() const {
@@ -19,7 +19,7 @@ public:
 class Land: public Vehicle {
 
 private:
-	int pass_cap = 5;
+	int passCap = 5;
 
 
 public:
@@ -27,26 +27,33 @@ public:
 
 	}
 
+	int getPassCap() const;
+	void setPassCap(int passCap);
 };
 
 class Aquatic: public Vehicle {
 
 private:
-	float max_load = 10;
+	float maxLoad = 10;
 public:
 	Aquatic(const char *name):  Vehicle(name){
 
 	}
+
+	float getMaxLoad() const;
+	void setMaxLoad(float maxLoad);
 };
 
 class Aerial: public Vehicle {
 
 private:
-	float max_speed = 100;
+	float maxSpeed = 100;
 
 public:
 	Aerial(const char *name):  Vehicle(name){
 
 	}
 
+	float getMaxSpeed() const;
+	void setMaxSpeed(float maxSpeed);
 };
