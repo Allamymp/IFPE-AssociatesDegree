@@ -7,8 +7,7 @@ protected:
 
 public:
 	Vehicle(const char *name) {
-		this->name = name;
-		cout << "Object " << getName() << " created!" << endl;
+
 	}
 
 	const string& getName() const {
@@ -85,12 +84,13 @@ public:
 
 };
 
-class Amphibian: public virtual Land, public virtual Aquatic {
+class Amphibian: public virtual  Land, public virtual Aquatic {
 
 public:
-	Amphibian (const char * name) : Vehicle(name), Land(), Aquatic() {}
-	void mover(){
-		Land::mover();
-		Aquatic::mover();
-	}
+	void mover() override{
+			Land::mover();
+			Aquatic::mover();
+		}
+	Amphibian (const char * name) : Vehicle(name), Land(), Aquatic() {};
+
 };

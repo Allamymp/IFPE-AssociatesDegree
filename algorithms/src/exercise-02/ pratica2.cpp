@@ -10,6 +10,7 @@ main () // 	// class main. Name of class changed. exclude "DELETETHIS" to run.
 
 
 	 Vehicle * earth = new Land("Land1");
+//	((Land *)earth) ->setPassCap(45);
 	((Land *)earth) ->setPassCap(45);
 	cout<<"PassCap: "<<((Land *)earth) ->getPassCap()<<endl;
 	earth->mover();
