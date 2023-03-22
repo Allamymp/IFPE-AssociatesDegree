@@ -10,16 +10,20 @@ void Land::mover(){
 	cout<<"Vehicle "<<Vehicle::getName()<<"  moved!"<<endl;
 }
 
+
 float Aquatic::getMaxLoad() const  {
-	return maxLoad;
+	return   maxLoad;
 }
 void Aquatic::setMaxLoad(float maxLoad) {
 
 	this->maxLoad = maxLoad;
 }
 void Aquatic::mover(){
+
 	cout<<"Vehicle "<<Vehicle::getName()<<"  moved!"<<endl;
 }
+
+
 
 float Aerial::getMaxSpeed() const {
 	return maxSpeed;
@@ -30,3 +34,5 @@ void Aerial::setMaxSpeed(float maxSpeed) {
 void Aerial::mover(){
 cout<<"Vehicle "<<Vehicle::getName()<<"  moved!"<<endl;
 }
+
+
