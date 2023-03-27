@@ -1,53 +1,60 @@
 #include "vehicle.h"
 #include <iostream>
 
-
- Vehicle::Vehicle(const char * name) {
-	this->name = name;
-	cout << "Object " << getName() << " created!" << endl;
+Vehicle::Vehicle(const char *name) {
+	this->name = string(name);
+	cout << "Object " << name << " created!" << endl;
 }
-void Vehicle::mover(){
-   cout<< "Vehicle  " << name <<  " moved."<<endl;
+;
+void Vehicle::move() {
+	cout << "Vehicle  " << name << " moved." << endl;
 }
-Vehicle::~Vehicle(){
-  cout << "object "<< name << " destroyed"<< endl<< endl;
+Vehicle::~Vehicle() {
+	cout << "object " << name << " destroyed" << endl << endl;
 }
 
-
-
-int Land::getPassCap() const {
-	return passCap;
-}
 void Land::setPassCap(int passCap) {
 	this->passCap = passCap;
 }
-void Land::mover() {
-	cout << "Vehicle " << Vehicle::getName() << "  moved!" << endl;
+int Land::getPassCap()  {
+	return passCap;
 }
-Land::~Land();
 
-float Aquatic::getMaxLoad() const {
-	return maxLoad;
+void Land::move() {
+	cout << "Vehicle " << name << "  moved!" << endl;
 }
+Land::~Land() {
+}
+;
+
 void Aquatic::setMaxLoad(float maxLoad) {
 
 	this->maxLoad = maxLoad;
 }
-void Aquatic::mover() {
-
-	cout << "Vehicle " << Vehicle::getName() << "  moved!" << endl;
+float Aquatic::getMaxLoad() const {
+	return maxLoad;
 }
-Aquatic::~Aquatic();
 
-float Aerial::getMaxSpeed() const {
-	return maxSpeed;
+void Aquatic::move() {
+
+	cout << "Vehicle " << name<< "  moved!" << endl;
 }
+Aquatic::~Aquatic() {
+}
+;
+
 void Aerial::setMaxSpeed(float maxSpeed) {
 	this->maxSpeed = maxSpeed;
 }
-void Aerial::mover() {
-
-	cout << "Vehicle " << Vehicle::getName() << "  moved!" << endl;
+float Aerial::getMaxSpeed() const {
+	return maxSpeed;
 }
-Aerial::~Aerial();
+
+void Aerial::move() {
+
+	cout << "Vehicle " << name << "  moved!" << endl;
+}
+Aerial::~Aerial() {
+}
+
 

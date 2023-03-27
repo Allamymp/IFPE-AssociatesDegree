@@ -6,91 +6,81 @@ protected:
 	string name;
 
 public:
-	Vehicle(const char *name) {
-
-	}
-
-	const string& getName() const {
-		return name;
-	}
-	virtual void mover() = 0;
-	virtual ~Vehicle() {
-
-	}
+	Vehicle(const char *name);
+////	virtual const string& getName() const {
+//		return name;
+//	}
+	virtual void move() = 0;
+	virtual ~Vehicle();
 
 };
 
-class Land: public Vehicle {
+class Land: public virtual Vehicle {
 protected:
-	Land():Vehicle("temp"){};
+	Land() :
+			Vehicle("temp") {
+		passCap = 5;
+	};
 
 private:
-	int passCap = 5;
+	int passCap;
 
 public:
+	void setPassCap(int passCap);
+	int getPassCap();
+	void move();
+virtual ~Land();
 	Land(const char *name) :
 			Vehicle(name) {
-
-	}
-
-	int getPassCap() const;
-	void setPassCap(int passCap);
-	void mover();
-	~Land() {
-		cout << "Object: " << getName() << " destroyed!" << endl << endl
-				<< endl;
-	}
+		passCap = 5;
+	};
 
 };
 
-class Aquatic: public Vehicle {
+class Aquatic: public virtual Vehicle {
 protected:
- Aquatic():Vehicle("temp"){};
+	Aquatic() : Vehicle("temp") {
+	};
+
 private:
-	float maxLoad = 10;
+	float maxLoad;
 public:
+
+	void setMaxLoad(float maxLoad);
+	float getMaxLoad() const;
+	void move();
+	virtual ~Aquatic();
 	Aquatic(const char *name) :
 			Vehicle(name) {
-
+		maxLoad = 10;
 	}
-
-	float getMaxLoad() const;
-	void setMaxLoad(float maxLoad);
-	void mover();
-	virtual ~Aquatic() {
-		cout << "Object: " << getName() << " destroyed!" << endl << endl
-				<< endl;
-	}
-
 };
 
 class Aerial: public Vehicle {
 private:
-	float maxSpeed = 100;
+	float maxSpeed;
 
 public:
+	void setMaxSpeed(float maxSpeed);
+	float getMaxSpeed() const;
+	void move();
+	virtual ~Aerial();
 	Aerial(const char *name) :
 			Vehicle(name) {
-
-	}
-
-	float getMaxSpeed() const;
-	void setMaxSpeed(float maxSpeed);
-	void mover();
-	~Aerial() {
-		cout << "Object: " << getName() << " destroyed!" << endl << endl
-				<< endl;
+		maxSpeed = 100;
 	}
 
 };
 
-class Amphibian: public virtual  Land, public virtual Aquatic {
+class Amphibian: public Land, public Aquatic {
 
 public:
-	void mover() override{
-			Land::mover();
-			Aquatic::mover();
-		}
-	Amphibian (const char * name) : Vehicle(name), Land(), Aquatic() {};
+	void move() override {
+		Land::move();
+		Aquatic::move();
+	}
+	Amphibian(const char *name) :
+			Vehicle(name), Land(), Aquatic() {
+	}
 
 };
