@@ -1,0 +1,31 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!DOCTYPE xs:schema [
+    <!ENTITY csc "&#x0203F;">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="dictionary">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="entry" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="title">
+                                <xs:complexType mixed="true">
+                                    <xs:sequence>
+                                        <xs:element name="csc" type="xs:string"
+                                            maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="body" />
+                        </xs:sequence>
+                        <xs:attribute name="birthplace" />
+                        <xs:attribute name="id" />
+                        <xs:attribute name="born" />
+                        <xs:attribute name="died" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
