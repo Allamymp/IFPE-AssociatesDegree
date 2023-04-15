@@ -14,7 +14,7 @@ using namespace functions;
 #include "Student.h"
 
 
-int main() {
+int mainDELETETHIS() {
 	try {
 
 		float x = 5.5, y = 10.15, z = 30.7;
