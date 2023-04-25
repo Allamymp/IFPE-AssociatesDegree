@@ -1,0 +1,44 @@
+
+Qual a média de preços dos álbuns do catálogo?
+R:
+Code:
+
+Qual o nome do álbum mais antigo do catálogo?
+R:
+Code:
+
+Qual o álbum mais caro do catálogo?
+R:
+Code:
+
+Quantos álbuns possuem artistas com nomes começando pela letra 'B'?
+R:
+Code:
+
+Quantos álbuns foram lançados na década de 1980?
+R:
+Code:
+
+Quais artistas lançaram álbuns pela Polydor?
+R:
+Code:
+
+Em que ano foi lançado o álbum mais barato do catálogo?
+R:
+Code:
+
+Qual o álbum mais caro lançado no ano de 1987?
+R:
+Code:
+
+Em que países os álbuns foram lançados?
+R:
+Code:
+
+Quantos artistas distintos existem no catálogo?
+R:
+Code:
+
+Quantos álbuns foram lançados por cada gravadora? Retornar o nome da gravadora e a respectiva quantidade de álbuns.
+R:
+Code:
