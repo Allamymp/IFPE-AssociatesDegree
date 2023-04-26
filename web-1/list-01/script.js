@@ -34,6 +34,7 @@ function testValue() {
         resultado.style.display = 'block';
     }//os dois com valor 
     else if ((inputGasolina.value !== '0' && inputGasolina.value !== '') && (inputEtanol.value !== '0' && inputEtanol.value !== '')) {
+        alert('alert3');
         if(razao<=0.7){
             resultado.textContent='Abasteça Etanol!'  
             resultado.style.display = 'block';
