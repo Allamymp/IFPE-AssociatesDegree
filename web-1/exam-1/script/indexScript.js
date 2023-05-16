@@ -4,23 +4,39 @@ const inputBar = document.getElementsByTagName('input')[0];
 
 
 
-c
-
-clickEvent.addEventListener('click',function(){
+var chances = 7;
+var inputNumber;
+const numGenerator = () => Math.floor(Math.random() * 100) + 1;
+var generatedNum = numGenerator();
+console.log(generatedNum);
+chancesNumber.textContent = chances;
+inputBar.value = "";
+clickEvent.addEventListener('click', function() {
+    handleGuess();
+  });
+  
+  inputBar.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+      handleGuess();
+    }
+  });
+  
+  function handleGuess() {
     inputNumber = inputBar.valueAsNumber;
-
-    if(inputNumber== generatedNum){
-        win();
+  
+    if (inputNumber == generatedNum) {
+      win();
+    } else {
+      lose();
     }
-    else{
-        lose();
-    }
-     
-});
-
+  }
 function win(){
     alert("WIN!");
-    inputBar.value="";
+    setTimeout(function() {
+        restart();
+     
+      }, 5000);
+    
 }
 function lose(){
     alert("LOSE!");
@@ -31,11 +47,12 @@ function lose(){
 
 
 function restart(){
-    var chances = 7;
+    chances = 7;
     var inputNumber;
     const numGenerator = () => Math.floor(Math.random() * 100) + 1;
-    var generatedNum = numGenerator();
+    generatedNum = numGenerator();
     console.log(generatedNum);
     chancesNumber.textContent = chances;
+    inputBar.value="";
 
 }
