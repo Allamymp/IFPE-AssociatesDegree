@@ -65,3 +65,12 @@ function restart(){
     alertText.style.display='none';
 
 }
+
+function biggerOrSmaller(){
+    if(inputNumber<generatedNum){
+        choiceType.textContent = "Smaller!";
+        choiceSmaller.value = inputNumber;
+        choiceBigger.value = 100;
+        alertText.style.display = 'block';
+    }
+}
