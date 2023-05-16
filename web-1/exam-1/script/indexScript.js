@@ -31,7 +31,6 @@ function control() {
   chances--;
   updateLayout(chances, choiceTypeControl, smallerNumControl.toString(), biggerNumControl.toString());
   inputNumber = inputBar.value; 
-  console.log(chances)
   if (chances > 0) {
     testValue();
   } else {
