@@ -1,4 +1,5 @@
 const clickEvent = document.getElementsByTagName('button')[0];
+const alertText = document.getElementById('alert');
 const chancesNumber =  document.getElementById('chances');
 const choiceBigger = document.getElementById('choiceBigger');
 const choiceSmaller = document.getElementById('choiceSmaller')
@@ -13,7 +14,11 @@ const numGenerator = () => Math.floor(Math.random() * 100) + 1;
 var generatedNum = numGenerator();
 console.log(generatedNum);
 chancesNumber.textContent = chances;
-inputBar.value = "";
+
+
+
+
+
 clickEvent.addEventListener('click', function() {
     handleGuess();
   });
@@ -57,5 +62,6 @@ function restart(){
     console.log(generatedNum);
     chancesNumber.textContent = chances;
     inputBar.value="";
+    alertText.style.display='none';
 
 }
