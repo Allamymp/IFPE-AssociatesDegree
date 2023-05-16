@@ -1,76 +1,101 @@
 const clickEvent = document.getElementsByTagName('button')[0];
-const alertText = document.getElementById('alert');
-const chancesNumber =  document.getElementById('chances');
-const choiceBigger = document.getElementById('choiceBigger');
-const choiceSmaller = document.getElementById('choiceSmaller')
-const choiceType = document.getElementById('choiceType');
+let alertText = document.getElementById('alert');
+let chancesNumber = document.getElementById('chances');
 const inputBar = document.getElementsByTagName('input')[0];
-
+const initialAlertText = "Your number is too" + choiceTypeControl + "["+smallerNumControl+", "+biggerNumControl+"]";
 
 
 var chances = 7;
 var inputNumber;
+var biggerNumControl="";
+var smallerNumControl="";
+var choiceTypeControl;
 const numGenerator = () => Math.floor(Math.random() * 100) + 1;
 var generatedNum = numGenerator();
-console.log(generatedNum);
+console.log("Generated num: " + generatedNum);
 chancesNumber.textContent = chances;
 
-
-
-
-
 clickEvent.addEventListener('click', function() {
-    handleGuess();
-  });
-  
-  inputBar.addEventListener('keydown', function(event) {
-    if (event.keyCode === 13) {
-      handleGuess();
+  inputNumber = inputBar.value;
+  control();
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    inputNumber = inputBar.value;
+    control();
+  }
+});
+
+function control() {
+  chances--;
+  updateLayout(chances, choiceTypeControl, smallerNumControl.toString(), biggerNumControl.toString());
+  inputNumber = inputBar.value; 
+  console.log(chances)
+  if (chances > 0) {
+    testValue();
+  } else {
+    alertText.textContent = "You lose! Correct number: " + generatedNum;
+    alertText.style.display = 'block';
+    reset();
+  }
+}
+
+function testValue() {
+  if (inputNumber == generatedNum) {
+    correct();
+  } else {
+    wrong();
+  }
+}
+
+function correct() {
+  alertText.style.display = 'block';
+  alertText.textContent = "Congratulations!";
+  reset();
+}
+
+function wrong() {
+  alertText.style.display = 'block';
+  biggerOrSmaller(inputNumber);
+}
+
+function biggerOrSmaller(inputNumber) {
+  if (inputNumber > generatedNum) {
+    if(inputNumber>100){
+      alertText.textContent = "Your number is bigger than limit! [limit = 100]";
     }
-  });
-  
-  function handleGuess() {
-    inputNumber = inputBar.valueAsNumber;
-  
-    if (inputNumber == generatedNum) {
-      win();
-    } else {
-      lose();
+    else{
+    updateLayout(chances, 'big', 1, inputNumber);
+    }
+  } else {
+    if(inputNumber<=0){
+      alertText.textContent = "Your number is smaller than minimum! [minimum = 1]";
+    }
+    else{
+        updateLayout(chances,'small',inputNumber,100);
     }
   }
-function win(){
-    alert("WIN!");
-    setTimeout(function() {
-        restart();
-     
-      }, 5000);
-    
-}
-function lose(){
-    alert("LOSE!");
-    chances--;
-    chancesNumber.textContent = chances;
-    inputBar.value="";
 }
 
-
-function restart(){
+function reset() {
+  
+  setTimeout(function() {
     chances = 7;
-    var inputNumber;
-    const numGenerator = () => Math.floor(Math.random() * 100) + 1;
+    inputBar.value = "";
+    inputNumber = "";
     generatedNum = numGenerator();
-    console.log(generatedNum);
+    console.log("New generated num: " + generatedNum);
     chancesNumber.textContent = chances;
-    inputBar.value="";
-    alertText.style.display='none';
-
+    alertText.textContent = initialAlertText;
+    alertText.style.display = 'none';
+  }, 5000);
 }
 
-function biggerOrSmaller(){
-    if(inputNumber<generatedNum){
-        choiceType.textContent = "Smaller!";
-        choiceSmaller.value = inputNumber;
-        choiceBigger.value = 100;
-        alertText.style.display = 'block';
-    }
+function updateLayout(chances, choiceTypeControl, smallerNumControl, biggerNumControl)
+{
+alertText.textContent = "Your number is too " + choiceTypeControl + "["+smallerNumControl+", "+biggerNumControl+"]";
+chancesNumber.textContent = chances;
+
+  
 }

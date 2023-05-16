@@ -24,9 +24,7 @@ html{
     font-weight: lighter;
     font-style: normal;
     font-size: medium;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     display: none;
   }
 
