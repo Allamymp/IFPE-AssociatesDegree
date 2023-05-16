@@ -19,6 +19,15 @@ html{
     align-items: center;
     justify-content: center;
   }
+  #alert{
+    margin: 0;
+    font-weight: lighter;
+    font-style: normal;
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   #messageChances{
     display: flex;
