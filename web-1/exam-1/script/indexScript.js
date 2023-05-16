@@ -1,5 +1,8 @@
 const clickEvent = document.getElementsByTagName('button')[0];
-const chancesNumber = document.getElementsByTagName('span')[0];
+const chancesNumber =  document.getElementById('chances');
+const choiceBigger = document.getElementById('choiceBigger');
+const choiceSmaller = document.getElementById('choiceSmaller')
+const choiceType = document.getElementById('choiceType');
 const inputBar = document.getElementsByTagName('input')[0];
 
 
