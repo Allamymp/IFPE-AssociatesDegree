@@ -2,6 +2,8 @@ const spanElement = document.querySelector('.word-box span');
 const shuffleButton = document.getElementById('shuffle-button');
 const timerElement = document.getElementById('timer');
 const checkElement = document.getElementById("check-button");
+const inputElement = document.querySelector('#word-input');
+const alertText = document.querySelector('#alert-text');
 
 const palavras = [
     'carro',
@@ -62,31 +64,38 @@ const palavras = [
   let timeRemaining = 30;
 let timerInterval;
 let palavra;
+let palavraEmbaralhada;
 function startTimer() {
-    clearInterval(timerInterval); // Limpa qualquer intervalo de temporização existente
-    timeRemaining = 30; // Reinicia o tempo restante para 30 segundos
-    timerInterval = setInterval(updateTimer, 10); // Inicia um novo intervalo de temporização
+    clearInterval(timerInterval);
+    timeRemaining = 30; 
+    timerInterval = setInterval(updateTimer, 10); 
     checkElement.disabled = false;
+    inputElement.disabled = false;
     checkElement.style.backgroundColor = "darkcyan";
+    alertText.style.color = "red";
+    alertText.textContent = " ";
 }
   function updateTimer() {
     timeRemaining -= 0.01;
-    timerElement.textContent = timeRemaining.toFixed(2);
+    timerElement.textContent = timeRemaining.toFixed(0);
   
     if (timeRemaining <= 0) {
       clearInterval(timerInterval);
       checkElement.disabled = true;  
-      checkElement.style.backgroundColor = "red";
-
+      inputElement.disabled = true;
+      checkElement.style.backgroundColor = "#cccccc";
+      alertText.textContent = "The time is up. The word was: "+palavra; 
       console.log("finished time");
       console.log("palavra: "+palavra);
+      waitSeconds();
+      
      
-      // Aqui você pode adicionar a lógica a ser executada quando o cronômetro chegar a zero
+      
     }
   }
 
-  function embaralharPalavra() {
-     palavra = palavras[Math.floor(Math.random() * palavras.length)];
+  function shuffleWord() {
+    palavra = palavras[Math.floor(Math.random() * palavras.length)];
     const letras = palavra.split('');
   
     for (let i = letras.length - 1; i > 0; i--) {
@@ -94,15 +103,49 @@ function startTimer() {
       [letras[i], letras[j]] = [letras[j], letras[i]];
     }
   
-    return letras.join('');
+    const palavraEmbaralhada = letras.join('');
+    spanElement.textContent = palavraEmbaralhada;
+    inputElement.value = '';
+    startTimer();
   }
   
-  shuffleButton.addEventListener('click', function() {
-    const palavraEmbaralhada = embaralharPalavra();
-    spanElement.textContent = palavraEmbaralhada;
-    startTimer();
-  });
+  shuffleButton.addEventListener('click', shuffleWord);
+  
 
-  checkElement.addEventListener('click',function(){
-    console.log("checked!");
-  });
+  checkElement.addEventListener('click', checkWord);
+
+inputElement.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    checkWord();
+  }
+});
+
+function checkWord() {
+  const inputWord = inputElement.value.trim().toLowerCase(); 
+ inputElement.value = '';
+  if (inputWord === palavra) {
+    console.log("Correct word!");
+    alertText.textContent = "Correct word! The word as: "+palavra;
+    alertText.style.color = "green";
+    checkElement.disabled = true;  
+    checkElement.style.backgroundColor = "#cccccc"
+    inputElement.disabled = true;
+    clearInterval(timerInterval);
+    waitSeconds();
+
+
+
+  } else {
+    console.log("Incorrect word!");
+    alertText.textContent = "Incorrect Word!";
+    
+
+  }
+};
+function waitSeconds() {
+  setTimeout(function() {
+    shuffleWord();
+    startTimer();
+  }, 5000); 
+};

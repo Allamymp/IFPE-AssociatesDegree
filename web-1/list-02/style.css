@@ -102,7 +102,7 @@ ul{
 }
 
 #shuffle-button{
-    background-color: #808080;
+    background-color:  #cc00ff;
     margin-right: 30px;
 }
 
@@ -110,3 +110,13 @@ ul{
     background-color: darkcyan;
 } 
 
+#alert-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    margin-top: 50px;
+    color: red;
+    font-size: 30px;
+    font-weight: 300;
+  }
